@@ -7,7 +7,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from torch.autograd import Variable
-from models.wisppn_resnet import ResNet, ResidualBlock
+from models.wisppn_resnet import MultiFormer, ResidualBlock
 from test_wipose import evalue_all_batch  # 假设这些自定义函数已实现
 from getrideof import *
 
@@ -94,7 +94,7 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # Instantiate the model
-    wisppn = ResNet(ResidualBlock, [1, 1, 1, 0]).to(device).float()
+    wisppn = MultiFormer(ResidualBlock, [1, 1, 1, 0]).to(device).float()
 
     # Load the .pth file into the model
     wisppn.load_state_dict(torch.load('weights3/wisppn-20251028-epoch60.pth'))

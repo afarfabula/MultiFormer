@@ -22,7 +22,7 @@ model_name = 'wisppn-20241027.pkl'  # 指定模型的文件名
 
 
 
-from models.wisppn_resnet import ResNet, ResidualBlock, Bottleneck
+from models.wisppn_resnet import MultiFormer, ResidualBlock, Bottleneck
 batch_size = 36
 num_epochs = 100
 
@@ -90,7 +90,7 @@ def freeze_weights(model, pretrained_path):
                 param.requires_grad = False
     return model
 
-wisppn = ResNet(ResidualBlock, [0, 0, 0 ,0])
+wisppn = MultiFormer(ResidualBlock, [0, 0, 0 ,0])
 # resnet = ResNet(ResidualBlock, [3, 4, 6, 3])
 # resnet = ResNet(Bottleneck, [3, 4, 6, 3])
 wisppn = torch.load('weights/epochsave.pkl')

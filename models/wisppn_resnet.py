@@ -132,9 +132,9 @@ class ResNetFD(nn.Module):
         return paf1,pcm1
 
 # ResNet Module
-class ResNet(nn.Module):
+class MultiFormer(nn.Module):
     def __init__(self, block, layers):
-        super(ResNet, self).__init__()
+        super(MultiFormer, self).__init__()
 
         self.firstBN = nn.BatchNorm2d(128)
         self.firstBN2 = nn.BatchNorm2d(128)
